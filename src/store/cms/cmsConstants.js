@@ -1,0 +1,1 @@
+export const GET_CMS_DATA = "/cms/get-cms-data";
