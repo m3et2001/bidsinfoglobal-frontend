@@ -271,9 +271,9 @@ export default function TenderDetails(props) {
                                 data-aos-delay='100'
                             >
                                 <div className='box'>
-                                    <h3>EMD </h3>
+                                    <h3>Sector </h3>
                                     <p>
-                                        {tenders_data?.emd}
+                                        {tenders_data?.sectors}
                                     </p>
                                 </div>
                             </div>
@@ -301,7 +301,7 @@ export default function TenderDetails(props) {
                                     <h3>
                                         Document
                                     </h3>
-                                    <p>{tenders_data?.documents}</p>
+                                    <a href={tenders_data?.documents}>{tenders_data?.documents}</a>
                                 </div>
                             </div>
                         </div>
