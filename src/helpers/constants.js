@@ -1,5 +1,7 @@
-const NODE_ENV = "https://www.beta.api.bidsinfoglobal.com";  // local development
-// const NODE_ENV = "http://localhost:4000"; // local development
+
+const NODE_ENV = "https://api.bidsinfoglobal.com"; // local development
+// const NODE_ENV = "http://localhost:3001"; // local development
+
 
 export const searchType = ["Any Word", "Exact Phrase", "Relevant Word"];
 export const geoLocationKeyword = ["Regions", "Country", "State & City"];
