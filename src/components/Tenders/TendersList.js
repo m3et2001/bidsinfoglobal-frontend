@@ -156,7 +156,7 @@ export default function TendersList({ getRegionsData, getSectorsData, getCpvCode
                                         className='TableHeader'
                                         body={publishedDateRow}
                                         sortable
-                                        header='Date'
+                                        header='Publish Date'
                                     ></Column>
                                     <Column
                                         className='TableHeader'
