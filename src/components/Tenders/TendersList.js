@@ -78,7 +78,7 @@ export default function TendersList({ getRegionsData, getSectorsData, getCpvCode
     };
 
     const closingDateRow = (rowData) => {
-        handleDateDefault(rowData?.closing_date);
+        return handleDateDefault(rowData?.closing_date);
     };
 
     // console.log(data, "data");
