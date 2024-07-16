@@ -15,7 +15,7 @@ function HomePageBanner({ login_title, login_description, forget_password, handl
         if (e.countryValue) {
             let country = countryData.find((obj) => obj.str_code === e.countryCode);
             console.log(country, "country");
-            navigate("/tenders-list", { state: { country: [country] } })
+            navigate("/tenders-list", { state: { country: [country] ,sortBy: 1} })
         }
     }
 

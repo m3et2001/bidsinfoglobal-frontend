@@ -26,7 +26,7 @@ export default function GrantsList({ getRegionsData, getSectorsData, getCpvCodes
         setFirst(payload?.first !== undefined ? payload.first : data.pageNo);
         fetchGrants({
             pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
-            limit: payload?.rows !== undefined ? payload.rows : data.limit,
+            limit: payload?.limit !== undefined ? payload.limit : data.limit,
             sortBy: payload?.sortOrder || data.sortBy,
             sortField: payload?.sortField || data.sortField,
             ...sidebarFilter
@@ -99,9 +99,9 @@ export default function GrantsList({ getRegionsData, getSectorsData, getCpvCodes
                                     ></Column>
                                     <Column
                                         className='TableHeader'
-                                        field='sectors'
+                                        field='big_ref_no'
                                         sortable
-                                        header='Grant Sector'
+                                        header='Big Reference no'
                                     ></Column>
                                     <Column
                                         className='TableHeader'
