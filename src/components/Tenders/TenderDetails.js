@@ -252,11 +252,18 @@ export default function TenderDetails(props) {
                 <div
                     data-bs-toggle='collapse'
                     href='#otherInformation'
-                    className='collapsed question'
+                    className={`question ${tenders_data?.authority_name ? '' : 'cursor-not-allowed'}`}
                 >
                     Other Information
                     <i className='bi bi-chevron-down icon-show'></i>
                     <i className='bi bi-chevron-up icon-close'></i>
+                    {
+                        tenders_data?.authority_name
+                            ?
+                           ''
+                            :
+                            <i className='bi bi-lock-fill locIcons'></i>
+                    }
                 </div>
                 <div
                     id='otherInformation'
