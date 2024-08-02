@@ -27,7 +27,7 @@ export default function ContractAwardsList({ getRegionsData, getSectorsData, get
         setFirst(payload?.first !== undefined ? payload.first : data.pageNo);
         fetchContractAwards({
             pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
-            limit: payload?.rows !== undefined ? payload.rows : data.limit,
+            limit: payload?.limit !== undefined ? payload.limit : data.limit,
             sortBy: payload?.sortOrder || data.sortBy,
             sortField: payload?.sortField || data.sortField,
             ...sidebarFilter
@@ -99,9 +99,9 @@ export default function ContractAwardsList({ getRegionsData, getSectorsData, get
                                     ></Column>
                                     <Column
                                         className='TableHeader'
-                                        field='sectors'
+                                        field='big_ref_no'
                                         sortable
-                                        header='Contract Sector'
+                                        header='Big Reference no'
                                     ></Column>
                                     <Column
                                         className='TableHeader'

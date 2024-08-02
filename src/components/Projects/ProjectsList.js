@@ -62,7 +62,7 @@ export default function ProjectsList({ getRegionsData, getSectorsData, getCpvCod
         setFirst(payload?.first !== undefined ? payload.first : data.pageNo);
         fetchProjects({
             pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
-            limit: payload?.rows !== undefined ? payload.rows : data.limit,
+            limit: payload?.limit !== undefined ? payload.limit : data.limit,
             sortBy: payload?.sortOrder || data.sortBy,
             sortField: payload?.sortField || data.sortField,
             ...sidebarFilter
@@ -139,9 +139,9 @@ export default function ProjectsList({ getRegionsData, getSectorsData, getCpvCod
                                     ></Column>
                                     <Column
                                         className='TableHeader'
-                                        field='sectors'
+                                        field='big_ref_no'
                                         sortable
-                                        header='Project Sector'
+                                        header='Big Reference no'
                                     ></Column>
                                     <Column
                                         className='TableHeader'
