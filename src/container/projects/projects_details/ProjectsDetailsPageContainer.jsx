@@ -50,7 +50,7 @@ class ProjectsDetailsPageContainer extends React.Component {
                                 <h3>
                                     Project <span>Information</span>
                                 </h3>
-                                <p>{projects_data?.project_background}</p>
+                                <p>{projects_data?.title}</p>
                             </div>
 
                             <div className='row justify-content-center'>

@@ -50,7 +50,7 @@ class GrantsDetailsPageContainer extends React.Component {
                                 <h3>
                                     Grant <span>Information</span>
                                 </h3>
-                                <p>{grants_data?.grant_background}</p>
+                                <p>{grants_data?.title}</p>
                             </div>
 
                             <div className='row justify-content-center'>

@@ -50,7 +50,7 @@ class TendersDetailsPageContainer extends React.Component {
                                 <h3>
                                     Tender <span>Information</span>
                                 </h3>
-                                <p>{tenders_data?.description}</p>
+                                <p>{tenders_data?.title}</p>
                             </div>
 
                             <div className='row justify-content-center'>

@@ -55,7 +55,7 @@ class ContractAwardsDetailsPageContainer extends React.Component {
                                 </h3>
                                 <p>
                                     {
-                                        contract_awards_data?.contract_award_background
+                                        contract_awards_data?.title
                                     }
                                 </p>
                             </div>
