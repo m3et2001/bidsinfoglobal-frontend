@@ -4,7 +4,7 @@ import { Column } from "primereact/column";
 import TenderSidebarFilter from "../common/TendersSidebarFilter";
 import FullScreenLoadingGrow from "../common/FullScreenLoadingGrow";
 import { Paginator } from "primereact/paginator";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 import { handleDateDefault } from "../../helpers/utils";
@@ -20,6 +20,7 @@ export default function TendersList({
   fetchTenders,
 }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [first, setFirst] = useState(0);
   const [sidebarFilter, setSidebarFilter] = useState({});
 
@@ -58,6 +59,7 @@ export default function TendersList({
   }, [location.state]);
 
   const setFilter = (e) => {
+    navigate(location.pathname, { state: {}, replace: true });
     setSidebarFilter(e);
   };
 
@@ -68,13 +70,6 @@ export default function TendersList({
   const handleFilter = (payload) => {
     window.scrollTo(0, 0);
     setFirst(payload?.first !== undefined ? payload.first : data.pageNo);
-    console.log(data, "sSss",payload,"PPPPPPPPPPPPP",sidebarFilter, "*******************************************", {
-      pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
-      limit: payload?.limit !== undefined ? payload.limit : data.limit,
-      sortBy: payload?.sortOrder || data.sortBy,
-      sortField: payload?.sortField || data.sortField,
-      ...sidebarFilter,
-    });
     fetchTenders({
       pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
       limit: payload?.limit !== undefined ? payload.limit : data.limit,
