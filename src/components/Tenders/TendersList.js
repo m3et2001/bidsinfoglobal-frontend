@@ -69,7 +69,8 @@ export default function TendersList({
 
   const handleFilter = (payload) => {
     window.scrollTo(0, 0);
-    setFirst(payload?.first !== undefined ? payload.first : data.pageNo);
+    const dataPage = data.pageNo ? data.pageNo : 0;
+    setFirst(payload?.first !== undefined ? payload.first : dataPage);
     fetchTenders({
       pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
       limit: payload?.rows !== undefined ? payload.rows : data.limit,
@@ -178,6 +179,7 @@ export default function TendersList({
                   header="Closing Date"
                 ></Column>
               </DataTable>
+              {console.log(first)}
               <Paginator
                 first={first}
                 rows={Number(data?.limit)}
