@@ -79,14 +79,14 @@ export default function TendersList({
     });
   };
 
-  const DescriptionRow = (rowData) => {
+  const TitleRow = (rowData) => {
     return (
       <Link
         target="_blank"
         className="limit-description"
         to={`/tenders/${rowData?.big_ref_no}`}
       >
-        {rowData.description}
+        {rowData?.title}
       </Link>
     );
   };
@@ -161,9 +161,9 @@ export default function TendersList({
                 ></Column>
                 <Column
                   className="TableHeader"
-                  body={DescriptionRow}
+                  body={TitleRow}
                   sortable
-                  header="Description"
+                  header="Title"
                 ></Column>
                 <Column
                   className="TableHeader"

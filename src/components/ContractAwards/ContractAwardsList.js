@@ -34,8 +34,8 @@ export default function ContractAwardsList({ getRegionsData, getSectorsData, get
         })
     }
 
-    const DescriptionRow = (rowData) => {
-        return <Link target="_blank" to={`/contract-awards/${rowData?.big_ref_no}`}>{rowData.description}</Link>;
+    const TitleRow = (rowData) => {
+        return <Link target="_blank" to={`/contract-awards/${rowData?.big_ref_no}`}>{rowData?.title}</Link>;
     };
     const awardsPublishDateRow = (rowData) => {
         return handleDateDefault(rowData.awards_publish_date);
@@ -105,9 +105,9 @@ export default function ContractAwardsList({ getRegionsData, getSectorsData, get
                                     ></Column>
                                     <Column
                                         className='TableHeader'
-                                        body={DescriptionRow}
+                                        body={TitleRow}
                                         sortable
-                                        header='Description'
+                                        header='Title'
                                     ></Column>
                                     <Column
                                         className='TableHeader'
