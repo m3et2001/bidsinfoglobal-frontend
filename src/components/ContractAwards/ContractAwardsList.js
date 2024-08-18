@@ -24,7 +24,9 @@ export default function ContractAwardsList({ getRegionsData, getSectorsData, get
     }, [sidebarFilter])
 
     const handleFilter = (payload, extra = {}) => {
-        setFirst(payload?.first !== undefined ? payload.first : data.pageNo);
+        const dataPage = data.pageNo ? data.pageNo : 0;
+
+        setFirst(payload?.first !== undefined ? payload.first : dataPage);
         fetchContractAwards({
             pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
             limit: payload?.limit !== undefined ? payload.limit : data.limit,
