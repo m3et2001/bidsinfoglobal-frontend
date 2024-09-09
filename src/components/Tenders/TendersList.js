@@ -72,8 +72,8 @@ export default function TendersList({
     const dataPage = data.pageNo ? data.pageNo : 0;
     setFirst(payload?.first !== undefined ? payload.first : dataPage);
     fetchTenders({
-      pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
-      limit: payload?.rows !== undefined ? payload.rows : data.limit,
+      pageNo: payload?.page  ? payload.page : data.pageNo,
+      limit: payload?.rows ? payload.rows : data.limit,
       sortBy: payload?.sortOrder || data.sortBy,
       sortField: payload?.sortField || data.sortField,
       ...sidebarFilter,
