@@ -163,6 +163,7 @@ export default function TendersList({
                 <Column
                   className="TableHeader"
                   body={TitleRow}
+                  field="title"
                   sortable
                   header="Title"
                 ></Column>
@@ -170,12 +171,14 @@ export default function TendersList({
                   className="TableHeader"
                   body={publishedDateRow}
                   sortable
+                  field="published_date"
                   header="Publish Date"
                 ></Column>
                 <Column
                   className="TableHeader"
                   body={closingDateRow}
                   sortable
+                  field="closing_date"
                   header="Closing Date"
                 ></Column>
               </DataTable>
