@@ -12,6 +12,7 @@ export default function TabPanelThree({ getFundingAgencyData, formik }) {
                     <FundingAgencySelect
                         getFundingAgencyData={getFundingAgencyData}
                         name="funding_agency"
+                        id="funding_agency"
                         multiple={true}
                         onChange={formik.handleChange("funding_agency")}
                         value={formik?.values?.funding_agency || []}

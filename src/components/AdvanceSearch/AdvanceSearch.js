@@ -11,8 +11,8 @@ export default function AdvanceSearch(props) {
 
     const handleSubmit = (values) => {
 
-        let payload = { ...values };
-
+        let payload = {...values};
+   
         payload.sectors = payload.sectors && payload.sectors.map((val) => {
             return val.name
         }).join(",");
@@ -26,7 +26,7 @@ export default function AdvanceSearch(props) {
             return val.code
         }).join(",");
         payload.funding_agency = payload.funding_agency && payload.funding_agency.map((val) => {
-            return val.name
+            return val.title
         }).join(",");
         payload.state = payload.state && payload.state.map((val) => {
             return val.name

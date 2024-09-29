@@ -5,7 +5,7 @@ const NODE_ENV = "https://api.bidsinfoglobal.com"; // local development
 
 export const searchType = [ "Exact Phrase", "Relevant Word"];
 export const geoLocationKeyword = ["Regions", "Country", "State & City"];
-export const competitionType = ["Domestic", "International", "Not-Specified"];
+export const competitionType = [{label:"Domestic",value:"Domestic"}, {label:"International",value:"International Competitive Biddiing"},{label:"Not-Specified",value:""}];
 export const noticeTypeConst = ["Tender", "Project", "Contract Award", "Grants"];
 export const tenderTypeConst = ["Live", "Archive"];
 

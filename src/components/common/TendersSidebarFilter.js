@@ -26,6 +26,9 @@ export default function TenderSidebarFilter({ onSubmit, loading, getRegionsData,
         payload.country = payload.country && payload.country.map((val) => {
             return val.name
         }).join(",");
+        payload.funding_agency = payload.funding_agency && payload.funding_agency.map((val) => {
+            return val.title
+        }).join(",");
 
         onSubmit(payload);
     }
