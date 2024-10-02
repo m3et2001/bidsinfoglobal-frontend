@@ -108,7 +108,7 @@ export default function GrantsList({
                   className="TableHeader"
                   field="big_ref_no"
                   sortable
-                  header="Big Reference no"
+                  header="Big Ref. No"
                 ></Column>
                 <Column
                   className="TableHeader"
