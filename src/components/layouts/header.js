@@ -79,7 +79,7 @@ function Header({
               </Link>
               <ul>
                 <li className="dropdown">
-                  <Link onClick={() => toggleClass()} to={"/tenders-list"}>
+                  <Link onClick={() => {toggleClass();window.location.reload();}} to={"/tenders-list"}>
                     <span>Tenders By Sector</span>
                   </Link>
                   <ul>
