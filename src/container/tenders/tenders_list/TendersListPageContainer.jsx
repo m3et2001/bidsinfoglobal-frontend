@@ -13,7 +13,7 @@ class TendersListPageContainer extends React.Component {
     };
   }
 
-  fetchTenders = async (payload) => {
+  fetchTenders = async (payload, isFilterChange, setIsFilterChanged) => {
     const { state } = this.props.location;
     // const [tenderData,setTenderData] =useState({})
     this.setState({ tenders_loading: true, tenders_data: {} });
@@ -30,7 +30,22 @@ class TendersListPageContainer extends React.Component {
           tenders_data: this.props.advance_search_response,
         });
       }
-    } else {
+    }
+    else if (isFilterChange) {
+      let tenderRes = await this.props.getTendersData(payload);
+      if (tenderRes.isSuccess) {
+        console.log(document.title)
+        window.history.replaceState({}, document.title);
+        // setTenderData(tenderRes.data)
+        console.log(tenderRes.data);
+        this.setState({
+          tenders_loading: false,
+          tenders_data: tenderRes.data,
+        });
+        setIsFilterChanged(false)
+      }
+    }
+    else {
       if (state?.sectorVal && state.sectorVal.length > 0)
         payload.sectors = state.sectorVal
           .map((val) => {

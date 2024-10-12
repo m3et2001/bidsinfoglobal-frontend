@@ -57,14 +57,16 @@ export default function TendersList({
       handleFilter(payload);
     }
   }, [location.state]);
-
+  const [isFilterChange, setIsFilterChanged] = useState(false)
   const setFilter = (e) => {
-    navigate(location.pathname, { state: {}, replace: true });
+    setIsFilterChanged(true)
+    // navigate(location.pathname, { state: {...location.state}, replace: true });
     setSidebarFilter(e);
   };
 
   useEffect(() => {
-    if (sidebarFilter && Object.keys(sidebarFilter).length > 0) handleFilter();
+    if (sidebarFilter && Object.keys(sidebarFilter).length > 0) { handleFilter(); }
+
   }, [sidebarFilter]);
 
   const handleFilter = (payload) => {
@@ -72,12 +74,12 @@ export default function TendersList({
     const dataPage = data.pageNo ? data.pageNo : 0;
     setFirst(payload?.first !== undefined ? payload.first : dataPage);
     fetchTenders({
-      pageNo: payload?.page  ? payload.page : data.pageNo,
+      pageNo: payload?.page ? payload.page : data.pageNo,
       limit: payload?.rows ? payload.rows : data.limit,
       sortBy: payload?.sortOrder || data.sortBy,
       sortField: payload?.sortField || data.sortField,
       ...sidebarFilter,
-    });
+    }, isFilterChange, setIsFilterChanged);
   };
 
   const TitleRow = (rowData) => {
