@@ -38,7 +38,7 @@ export default function SubscribeComponent({ data, handlePlan, submit_loading, s
                             key={key}
                         >
                             <div className="box" >
-                                <h3>{val.title}</h3>
+                                <h3>{val?.title}</h3>
                                 {
                                     val.amount > 0
                                         ?
@@ -80,7 +80,7 @@ export default function SubscribeComponent({ data, handlePlan, submit_loading, s
                                         :
                                         <ul>
                                             {
-                                                val.access.map(function (dd, key) {
+                                                val?.access?.map(function (dd, key) {
                                                     return (
                                                         <li key={key}>{dd}</li>
                                                     )

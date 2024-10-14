@@ -106,7 +106,7 @@ class TendersListPageContainer extends React.Component {
         <main className="bodyMain">
           <section id="faq" className="faq">
             <div className="container" data-aos="fade-up">
-              <TenderListInfo />
+              <TenderListInfo {...this.props} />
             </div>
           </section>
           <section className="CategoryLst spacelr">

@@ -93,6 +93,8 @@ export const sectorParser = (response) => {
             let obj = {
                 _id: val?._id,
                 name: val?.name,
+                title: val?.title,
+                description: val?.description,
                 icon: val?.icon,
                 code: val?.code
             }
