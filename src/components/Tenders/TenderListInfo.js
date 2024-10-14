@@ -12,26 +12,22 @@ export default function TenderListInfo({ getSectorsData }) {
     useEffect(() => {
         SetIsTitleShow(false)
 
-        const stateKey = Object.keys(location?.state ? location.state : {})
+        const stateKey = Object.keys(location?.state ? location.state : {}).filter(element => element !== "sortBy");
         const stateValue = Object.values(location?.state ? location.state : {})
         if (stateKey.length === 1) {
-            if (stateKey[0] === "sectorVal") {
-                if (stateValue[0]?.length === 1) {
-
+            if (stateValue[0]?.length === 1) {
+                if (stateValue[0][0]?.title) {
                     SetIsTitleShow(true)
                     setTitle({
                         title: stateValue[0][0].title,
                         description: stateValue[0][0].description,
                     })
-                    console.log(stateValue[0][0].title, "wwwwwwwwwwwwwwwwwwwwwwwww3eer43wwwwwwwww")
-                }
-                else {
-
                 }
             }
-            // alert(stateKey[0] === "sectorVal")
+            else {
+
+            }
         }
-        console.log(location.state, "wwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
 
 
     }, [location.state])
@@ -44,7 +40,7 @@ export default function TenderListInfo({ getSectorsData }) {
                     </h3>
                     <p>
                         {title?.description}
-{/* 
+                        {/* 
                         <span
                             className='readMoreLink'
                             onClick={() => setVisible(true)}

@@ -12,6 +12,8 @@ export const homeCountryParser = (response) => {
             let obj = {
                 _id: val?._id,
                 name: val?.name,
+                title: val?.title,
+                description: val?.description,
                 num_code: val?.num_code,
                 code: val?.num_code,
                 str_code: val?.str_code,
@@ -127,6 +129,8 @@ export const countryParser = (response) => {
             let obj = {
                 _id: val?._id,
                 name: val?.name,
+                title: val?.title,
+                description: val?.description,
                 num_code: val?.num_code,
                 code: val?.num_code,
                 str_code: val?.str_code
@@ -179,6 +183,8 @@ export const regionParser = (response) => {
             let obj = {
                 _id: val?._id,
                 name: val?.name,
+                title: val?.title,
+                description: val?.description,
                 code: val?.code
             }
             if (response?.by_tenders_count) {
