@@ -1,6 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { isMobile } from 'react-device-detect';
+import { useState } from "react";
 
 export default function TopCategories({ data }) {
+    const [isActive, setIsActive] = useState(true);
+    const Navigate = useNavigate()
+    const handleActionClick = (e, payload, type, url) => {
+        e.preventDefault();
+        Navigate(url, { state: { [type]: [payload] } });
+        
+    };
     return (
         <section id="TopTenders" className="services ">
             <div className="container" data-aos="fade-up">
@@ -24,13 +33,23 @@ export default function TopCategories({ data }) {
                                     data-aos="fade-up"
                                     data-aos-delay="100"
                                     key={ind}
+
                                 >
                                     <div className="icon-box" >
                                         <div className="icon nobg">
                                             <img src={val.icon} alt={val.name} />
                                         </div>
                                         <h4>
-                                            <Link href="">{val.name}</Link>
+                                            <Link to={"/tenders-list"}
+                                                onClick={(e) =>
+                                                    handleActionClick(
+                                                        e,
+                                                        val,
+                                                        "sectorVal",
+                                                        "/tenders-list"
+                                                    )
+                                                }
+                                            >{val.name}</Link>
                                         </h4>
                                     </div>
                                 </div>

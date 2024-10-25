@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function SingleTendersBy({ data, navigate, type }) {
+export default function SingleTendersBy({ data, type }) {
 
-    const handleActionClick = (e, payload) => {
+    const Navigate = useNavigate()
+    // const handleActionClick = (e, payload) => {
+    //     e.preventDefault();
+
+    //     navigate("/tenders-list", { state: { [type]: payload.name } })
+    // }
+    const handleActionClick = (e, payload, type, url) => {
         e.preventDefault();
+        Navigate(url, { state: { [type]: [payload] } });
 
-        navigate("/tenders-list", { state: { [type]: payload.name } })
-    }
+    };
 
     return (
         <div
@@ -26,7 +32,14 @@ export default function SingleTendersBy({ data, navigate, type }) {
                         null
                 }
                 <h4>
-                    <Link to={"/tenders-list"} onClick={(e) => handleActionClick(e, data?.name)}> {data?.name}  </Link>
+                    <Link to={"/tenders-list"} onClick={(e) =>
+                        handleActionClick(
+                            e,
+                            data,
+                            "sectorVal",
+                            "/tenders-list"
+                        )
+                    }> {data?.name}  </Link>
                 </h4>
                 {
                     type === "cpvCodesVal"
