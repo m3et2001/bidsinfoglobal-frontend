@@ -36,7 +36,7 @@ function Footer({ links, contactDetails }) {
                                     <li><i className="bx bx-chevron-right"></i><Link to="/contract-awards-list">Contract Awards</Link></li>
                                     <li><i className="bx bx-chevron-right"></i><Link to="/grants-list">Grants </Link></li>
                                     <li><i className="bx bx-chevron-right"></i><Link to="/subscribe">Subscribe</Link></li>
-                                    <li><i className="bx bx-chevron-right"></i><Link to="/EProcurement">E - Procurement</Link></li>
+                                    {/* <li><i className="bx bx-chevron-right"></i><Link to="/EProcurement">E - Procurement</Link></li> */}
 
 
                                 </ul>

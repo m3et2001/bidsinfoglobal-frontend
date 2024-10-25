@@ -64,13 +64,13 @@ function App() {
                       Advanced Search
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <li>
                       <Link to="EProcurement" className="nav-link scrollto ">
                         E - Procurement
                       </Link>
                     </li>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="contact" className="nav-link scrollto ">
                       Contact Us

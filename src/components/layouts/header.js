@@ -293,9 +293,9 @@ function Header({
             <li className="ForMobileOnly">
               <Link onClick={() => toggleClass()} to={'/advance-search'} >Advanced Search</Link>
             </li>
-            <li className="ForMobileOnly">
+            {/* <li className="ForMobileOnly">
               <Link onClick={() => toggleClass()} to="EProcurement">E - Procurement</Link>
-            </li>
+            </li> */}
             <li className="ForMobileOnly">
               <Link onClick={() => toggleClass()} to="contact">Contact Us</Link>
             </li>

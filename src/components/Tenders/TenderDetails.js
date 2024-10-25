@@ -1,7 +1,34 @@
 import { format, parseISO } from "date-fns";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { handleDateDefault } from "../../helpers/utils";
 
+const ReadMoreParagraph = ({ text, wordLimit = 150 }) => {
+    // State to toggle between showing less and more text
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    // Split the paragraph into words
+    const words = text.split(" ");
+
+    // Check if the text exceeds the word limit
+    const isTextLong = words.length > wordLimit;
+
+    // Display text based on whether it's expanded
+    const displayText = isExpanded ? text : words.slice(0, wordLimit).join(" ") + (isTextLong ? "......." : "");
+
+    return (
+        <div>
+            <p>{displayText}</p>
+            {isTextLong && (
+                <span
+                
+                
+                className="readMoreLink" onClick={() => setIsExpanded(!isExpanded)}>
+                    {isExpanded ? "Show Less" : "Read More"}
+                </span>
+            )}
+        </div>
+    );
+};
 export default function TenderDetails(props) {
     const { tenders_data } = props;
 
@@ -130,7 +157,8 @@ export default function TenderDetails(props) {
                             >
                                 <div className='box'>
                                     <h3> Description </h3>
-                                    <p> {tenders_data?.description} </p>
+                                    {/* <p> {tenders_data?.description} </p> */}
+                                    <ReadMoreParagraph text={tenders_data?.description} />
                                 </div>
                             </div>
                            
