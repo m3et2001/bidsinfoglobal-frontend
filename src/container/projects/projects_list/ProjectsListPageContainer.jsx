@@ -13,8 +13,9 @@ class ProjectsListPageContainer extends React.Component {
         };
     }
 
-    fetchProjects = async (payload) => {
+    fetchProjects = async (payload, isFilterChange, setIsFilterChanged) => {
         const { state } = this.props.location;
+        this.setState({ projects_loading: true, projects_data: {} });
 
         if (state?.advance_search) {
             await this.props.advanceSearchFunction({
@@ -28,7 +29,19 @@ class ProjectsListPageContainer extends React.Component {
                     projects_data: this.props.advance_search_response,
                 });
             }
-        } else {
+        }
+        else if (isFilterChange) {
+            let projectsRes = await this.props.getProjectsData(payload);
+            if (projectsRes.isSuccess) {
+                window.history.replaceState({}, document.title);
+                this.setState({
+                    projects_loading: false,
+                    projects_data: projectsRes.data,
+                });
+                setIsFilterChanged(false)
+            }
+        }
+        else {
             if (state?.sectorVal && state.sectorVal.length > 0)
                 payload.sectors = state.sectorVal
                     .map((val) => {

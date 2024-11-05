@@ -56,8 +56,11 @@ export default function ProjectsList({
       handleFilter(payload);
     }
   }, [location.state]);
+  const [isFilterChange, setIsFilterChanged] = useState(false)
 
   const setFilter = (e) => {
+    setIsFilterChanged(true)
+
     setSidebarFilter(e);
   };
 
@@ -66,16 +69,18 @@ export default function ProjectsList({
   }, [sidebarFilter]);
 
   const handleFilter = (payload) => {
+    console.log(data)
+    window.scrollTo(0, 0);
     const dataPage = data.pageNo ? data.pageNo : 0;
 
     setFirst(payload?.first !== undefined ? payload.first : dataPage);
     fetchProjects({
-      pageNo: payload?.page !== undefined ? payload.page : data.pageNo,
-      limit: payload?.limit !== undefined ? payload.limit : data.limit,
+      pageNo: payload?.page  ? payload.page : data.pageNo,
+      limit: payload?.rows  ? payload.rows : data.limit,
       sortBy: payload?.sortOrder || data.sortBy,
       sortField: payload?.sortField || data.sortField,
       ...sidebarFilter,
-    });
+    }, isFilterChange, setIsFilterChanged);
   };
 
   const DescriptionRow = (rowData) => {

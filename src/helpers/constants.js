@@ -1,6 +1,7 @@
 
 const NODE_ENV = "https://api.bidsinfoglobal.com"; // local development 
 // const NODE_ENV = "http://localhost:5000"; // local development
+// const NODE_ENV = "https://90f5-103-142-163-119.ngrok-free.app"; // local development
 
 
 export const searchType = [ "Exact Phrase", "Relevant Word"];

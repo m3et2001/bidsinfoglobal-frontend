@@ -8,11 +8,68 @@ import RegionSelect from "./RegionSelect";
 import FundingAgencySelect from "./FundingAgencySelect";
 import { noticeTypeConst } from "../../helpers/constants";
 import CountrySelect from "./CountrySelect";
+import { useNavigate } from "react-router-dom";
 
 export default function TenderSidebarFilter({ onSubmit, loading, getRegionsData, getCountryData, getSectorsData, getCpvCodesData, getFundingAgencyData, sectorVal = [], cpvCodesVal = [], regionsVal = [], country = [], noticeType }) {
-
+    const navigate = useNavigate()
     const handleSubmit = (values) => {
         let payload = { ...values };
+        if (payload.notice_type === "Tender") {
+            navigate("/tenders-list",
+                {
+                    state: {
+                        sectorVal: payload.sectors,
+                        regionsVal: payload.regions,
+                        cpvCodesVal: payload.cpv_codes,
+                        country: payload.country,
+                        keywords: payload.keywords,
+                        fundAgencyVal: payload.funding_agency,
+                    }
+                })
+
+        }
+        if (values.notice_type === "Project") {
+            navigate("/projects-list",
+                {
+                    state: {
+                        sectorVal: payload.sectors,
+                        regionsVal: payload.regions,
+                        cpvCodesVal: payload.cpv_codes,
+                        country: payload.country,
+                        keywords: payload.keywords,
+                        fundAgencyVal: payload.funding_agency,
+                    }
+                })
+
+        }
+        if (values.notice_type === "Contract Award") {
+            navigate("/contract-awards-list",
+                {
+                    state: {
+                        sectorVal: payload.sectors,
+                        regionsVal: payload.regions,
+                        cpvCodesVal: payload.cpv_codes,
+                        country: payload.country,
+                        keywords: payload.keywords,
+                        fundAgencyVal: payload.funding_agency,
+                    }
+                })
+
+        }
+        if (values.notice_type === "Grants") {
+            navigate("/grants-list",
+                {
+                    state: {
+                        sectorVal: payload.sectors,
+                        regionsVal: payload.regions,
+                        cpvCodesVal: payload.cpv_codes,
+                        country: payload.country,
+                        keywords: payload.keywords,
+                        fundAgencyVal: payload.funding_agency,
+                    }
+                })
+
+        }
 
         payload.sectors = payload.sectors && payload.sectors.map((val) => {
             return val.name
