@@ -39,7 +39,7 @@ export default function SubscribeComponent({ data, handlePlan, submit_loading, s
                         >
                             <div className="box" >
                                 <h3>{val?.title}</h3>
-                                {
+                                {/* {
                                     val.amount > 0
                                         ?
                                         <h4>
@@ -47,7 +47,7 @@ export default function SubscribeComponent({ data, handlePlan, submit_loading, s
                                         </h4>
                                         :
                                         null
-                                }
+                                } */}
 
                                 {
                                     val.plan_name === "CUSTOMISE_PACKAGE"
