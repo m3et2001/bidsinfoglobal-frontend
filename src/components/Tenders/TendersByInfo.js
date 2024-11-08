@@ -5,7 +5,7 @@ export default function TendersByInfo() {
     const [visible, setVisible] = useState(false);
 
     return (
-        <div className='section-title sectionList ListPageSection'>
+        <div className='section-title sectionList ListPageSection' style={{textAlign:"left"}}>
             <h3>
                 View latest Tenders by Sectors - complete
                 list
