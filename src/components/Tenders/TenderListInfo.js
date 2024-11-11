@@ -13,7 +13,13 @@ function trimParagraph(paragraph, wordLimit) {
     return words.slice(0, wordLimit).join(" ") + "...";
 }
 
+function Description({ description }) {
+    const formattedDescription = description.replace(/\n/g, "<br />");
 
+    return (
+        <div dangerouslySetInnerHTML={{ __html: formattedDescription }} />
+    );
+}
 
 export default function TenderListInfo({ getSectorsData }) {
     const [visible, setVisible] = useState(false);
@@ -47,16 +53,16 @@ export default function TenderListInfo({ getSectorsData }) {
         <div className='section-title sectionList ListPageSection'>
             {isTitleShow &&
                 <>
-                    <h3 style={{textAlign:"left"}}>
+                    <h3 style={{ textAlign: "left" }}>
                         {title?.title}
                     </h3>
-                    <p style={{textAlign:"left"}}>
+                    <p style={{ textAlign: "left" }}>
                         {trimParagraph(title?.description, 100)}
-
+                        <Description description={trimParagraph(title?.description, 100)} />
                         <span
                             className='readMoreLink'
                             onClick={() => setVisible(true)}
-                            style={{textAlign:"center"}}
+                            style={{ textAlign: "center" }}
                         >
                             Read more
                         </span>
@@ -64,16 +70,18 @@ export default function TenderListInfo({ getSectorsData }) {
                             className='ModalMaindiwo'
                             header={title?.title}
                             visible={visible}
-                            style={{ width: "80vw",textAlign:"left" }}
+                            style={{ width: "80vw", textAlign: "left" }}
                             onHide={() => setVisible(false)}
                         >
                             <p className='m-0'
-                            style={{textAlign:"left" }}
+                                style={{ textAlign: "left" }}
 
                             >
                                 {title?.description}
+                                <Description description={title?.description} />
+
                             </p>
-                        
+
                         </Dialog>
                     </p>
                 </>}
