@@ -57,7 +57,6 @@ export default function TenderListInfo({ getSectorsData }) {
                         {title?.title}
                     </h3>
                     <p style={{ textAlign: "left" }}>
-                        {trimParagraph(title?.description, 100)}
                         <Description description={trimParagraph(title?.description, 100)} />
                         <span
                             className='readMoreLink'
@@ -77,7 +76,6 @@ export default function TenderListInfo({ getSectorsData }) {
                                 style={{ textAlign: "left" }}
 
                             >
-                                {title?.description}
                                 <Description description={title?.description} />
 
                             </p>
