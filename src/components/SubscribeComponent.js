@@ -1,10 +1,17 @@
 import React, { Component, useState } from "react";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "./common/Button";
+import { isAuth } from "../helpers/cookies";
+import { Dialog } from "primereact/dialog";
+import CallToActionRegisterComponent from "./CallToActionRegisterComponent";
 
 export default function SubscribeComponent({ data, handlePlan, submit_loading, success }) {
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [submitLoading, setSubmitLoading] = useState(false);
+    const [visible, setVisible] = useState(false);
 
+    const openDialog = () => setVisible(true);
+    const closeDialog = () => setVisible(false);
     const onCategoryChange = (e) => {
         let _selectedCategories = [...selectedCategories];
 
@@ -16,10 +23,21 @@ export default function SubscribeComponent({ data, handlePlan, submit_loading, s
 
         setSelectedCategories(_selectedCategories);
     };
+    const handlePlanSelect = (key, val, selectedCategories) => {
+        if (
+            isAuth()
+        ) {
+            setSubmitLoading(key)
+            handlePlan({ plan_id: val.plan_id, categories: selectedCategories })
+        }
+        else {
+            openDialog()
+        }
+    }
 
     return (
 
-        <div className="row">
+        <div className="row justify-content-center">
             {
                 success ?
                     <div className="alert alert-success">
@@ -90,14 +108,25 @@ export default function SubscribeComponent({ data, handlePlan, submit_loading, s
                                 }
 
                                 <div className="btn-wrap">
-                                    <Button value={"Choose Plan"} loading={submit_loading} className="btn-buy" onClick={() => handlePlan({ plan_id: val.plan_id, categories: selectedCategories })} />
+                                    <Button value={"Choose Plan"} loading={submit_loading && submitLoading === key} className="btn-buy" onClick={() => handlePlanSelect(key, val, selectedCategories)} />
                                 </div>
                             </div>
+
                         </div>
                     )
                 })
             }
+            <Dialog
+                className='ModalMaindiwo '
+                header={"Join Us Today for Exclusive Benefits!"}
+                visible={visible}
+                style={{ maxWidth: "80vw", textAlign: "left" }}
+                onHide={closeDialog}
+            >
+                <CallToActionRegisterComponent closeDialog={closeDialog} />
 
+
+            </Dialog>
 
 
             {/* <div

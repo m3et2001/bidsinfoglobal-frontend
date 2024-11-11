@@ -354,21 +354,21 @@ export default function TenderDetails(props) {
                                     <a href={tenders_data?.documents}>{tenders_data?.documents}</a>
                                 </div>
                             </div>
-                            <Dialog
-                                className='ModalMaindiwo '
-                                header={"Join Us Today for Exclusive Benefits!"}
-                                visible={visible}
-                                style={{ maxWidth: "80vw", textAlign: "left" }}
-                                onHide={closeDialog}
-                            >
-                                <CallToActionRegisterComponent closeDialog={closeDialog} />
-
-
-                            </Dialog>
                         </div>
                     </div>
                 </div>
             </li>
+            <Dialog
+                className='ModalMaindiwo '
+                header={"Join Us Today for Exclusive Benefits!"}
+                visible={visible}
+                style={{ maxWidth: "80vw", textAlign: "left" }}
+                onHide={closeDialog}
+            >
+                <CallToActionRegisterComponent closeDialog={closeDialog} />
+
+
+            </Dialog>
         </ul>
     )
 }
