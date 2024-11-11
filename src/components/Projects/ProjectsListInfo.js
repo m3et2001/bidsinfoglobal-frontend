@@ -1,223 +1,88 @@
 import { Dialog } from "primereact/dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import mastersApis from "../../store/masters/mastersApis";
+import { useLocation } from "react-router-dom";
+function trimParagraph(paragraph, wordLimit) {
+    // Split the paragraph into words
+    const words = paragraph.split(" ");
+    // If the paragraph has fewer or equal words than the limit, return it as-is
+    if (words.length <= wordLimit) {
+        return paragraph;
+    }
+    // Join the first 150 words and add an ellipsis
+    return words.slice(0, wordLimit).join(" ") + "...";
+}
 
-export default function TenderListInfo() {
+function Description({ description }) {
+    const formattedDescription = description.replace(/\n/g, "<br />");
+
+    return (
+        <div dangerouslySetInnerHTML={{ __html: formattedDescription }} />
+    );
+}
+
+export default function TenderListInfo({ getSectorsData }) {
     const [visible, setVisible] = useState(false);
+    const [isTitleShow, SetIsTitleShow] = useState(false);
+    const [title, setTitle] = useState({});
+    const location = useLocation();
+
+    useEffect(() => {
+        SetIsTitleShow(false)
+
+        const stateKey = Object.keys(location?.state ? location.state : {}).filter(element => element !== "sortBy");
+        const stateValue = Object.values(location?.state ? location.state : {})
+        if (stateKey.length === 1) {
+            if (stateValue[0]?.length === 1) {
+                if (stateValue[0][0]?.title) {
+                    SetIsTitleShow(true)
+                    setTitle({
+                        title: stateValue[0][0].title,
+                        description: stateValue[0][0].description,
+                    })
+                }
+            }
+            else {
+
+            }
+        }
+
+
+    }, [location.state])
     return (
         <div className='section-title sectionList ListPageSection'>
-            <h3>
-                Consultancy Projects - Govt eTender,
-                Consultancy eProcurement Notice, RFP, bids
-            </h3>
-            <p>
-                Consultancy Projects: Find Latest Tender
-                Notices, for thousands of Consultancy
-                eProjects, eProcurement Notices, Bids,
-                Updates & more. Search Government & Private
-                Consultancy Projects published on various
-                tender and eProcurement portals worldwide.
-                bidsinfoglobal Has the Largest Database of
-                Global Consultancy Projects online. We cover
-                Consultancy Projects published on thousands
-                of online Tender portals and Newspapers. So
-                that you do not have to visit 100s of
-                websites to find perfect Consultancy tender
-                for your Businesss...
-                <span
-                    className='readMoreLink'
-                    onClick={() => setVisible(true)}
-                >
-                    Read more
-                </span>
-                <Dialog
-                    className='ModalMaindiwo'
-                    header='Consultancy Projects - Govt eTender, Consultancy eProcurement Notice, RFP, bids'
-                    visible={visible}
-                    style={{ width: "80vw" }}
-                    onHide={() => setVisible(false)}
-                >
-                    <p className='m-0'>
-                        Consultancy Projects: Find Latest
-                        Tender Notices, for thousands of
-                        Consultancy eProjects, eProcurement
-                        Notices, Bids, Updates & more.
-                        Search Government & Private
-                        Consultancy Projects published on
-                        various tender and eProcurement
-                        portals worldwide. bidsinfoglobal
-                        Has the Largest Database of Global
-                        Consultancy Projects online. We cover
-                        Consultancy Projects published on
-                        thousands of online Tender portals
-                        and Newspapers. So that you do not
-                        have to visit 100s of websites to
-                        find perfect Consultancy tender for
-                        your Businesss. Get 100% accurate
-                        Tender information for Consultancy
-                        projects & find Complete tender
-                        details. along with that you can
-                        also get tender results, tender
-                        updates, procurement notice, Govt
-                        Projects, Tender notifications &
-                        govt contracts.
+            {isTitleShow &&
+                <>
+                    <h3 style={{ textAlign: "left" }}>
+                        {title?.title}
+                    </h3>
+                    <p style={{ textAlign: "left" }}>
+                        <Description description={trimParagraph(title?.description, 100)} />
+                        <span
+                            className='readMoreLink'
+                            onClick={() => setVisible(true)}
+                            style={{ textAlign: "center" }}
+                        >
+                            Read more
+                        </span>
+                        <Dialog
+                            className='ModalMaindiwo'
+                            header={title?.title}
+                            visible={visible}
+                            style={{ width: "80vw", textAlign: "left" }}
+                            onHide={() => setVisible(false)}
+                        >
+                            <p className='m-0'
+                                style={{ textAlign: "left" }}
+
+                            >
+                                <Description description={title?.description} />
+
+                            </p>
+
+                        </Dialog>
                     </p>
-                    <div className='modal_dialog_box'>
-                        <h3 className='ModalTitle'>
-                            Discover Global Consultancy
-                            Projects
-                        </h3>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                        <ul>
-                            <li>
-                                Consultancy projects by
-                                cities
-                            </li>
-                            <li>
-                                Consultancy projects by
-                                states
-                            </li>
-                            <li>
-                                Consultancy projects by
-                                coutries
-                            </li>
-                            <li>
-                                Consultancy projects by Value
-                            </li>
-                            <li>
-                                Consultancy projects by
-                                opening & Closing Date
-                            </li>
-                            <li>
-                                Consultancy projects by
-                                Authority
-                            </li>
-                        </ul>
-                    </div>
-                    <div className='modal_dialog_box'>
-                        <h3 className='ModalTitle'>
-                            Discover Global Consultancy
-                            Projects
-                        </h3>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                    </div>
-                    <div className='modal_dialog_box'>
-                        <h3 className='ModalTitle'>
-                            Discover Global Consultancy
-                            Projects
-                        </h3>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                        <p>
-                            bidsinfoglobal has the most
-                            comprehensive coverage for
-                            Consultancy projects in 200+
-                            countries globally. So Whether
-                            you are looking for small value
-                            local tender or a High Value
-                            International Consultancy
-                            Tender, You can be assured to
-                            find the Perfect Business
-                            opportunity from any corner of
-                            the world as bidsinfoglobal is
-                            largest tender aggergator for
-                            Consultancy projects of all types
-                            where users can find
-                        </p>
-                    </div>
-                </Dialog>
-            </p>
+                </>}
         </div>
     )
 }
