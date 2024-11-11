@@ -1,6 +1,10 @@
 import { format, parseISO } from "date-fns";
 import { Fragment, useState } from "react";
 import { handleDateDefault } from "../../helpers/utils";
+import { Dialog } from "primereact/dialog";
+import RegisterComponent from "../RegisterComponent";
+import CallToActionRegisterComponent from "../CallToActionRegisterComponent";
+
 
 const ReadMoreParagraph = ({ text, wordLimit = 150 }) => {
     // State to toggle between showing less and more text
@@ -20,9 +24,9 @@ const ReadMoreParagraph = ({ text, wordLimit = 150 }) => {
             <p>{displayText}</p>
             {isTextLong && (
                 <span
-                
-                
-                className="readMoreLink" onClick={() => setIsExpanded(!isExpanded)}>
+
+
+                    className="readMoreLink" onClick={() => setIsExpanded(!isExpanded)}>
                     {isExpanded ? "Show Less" : "Read More"}
                 </span>
             )}
@@ -31,26 +35,31 @@ const ReadMoreParagraph = ({ text, wordLimit = 150 }) => {
 };
 export default function TenderDetails(props) {
     const { tenders_data } = props;
+    const [visible, setVisible] = useState(false);
 
+    const closeDialog = () => setVisible(false);
     return (
         <ul className='faq-list'>
             <li>
-                <div
-                    data-bs-toggle='collapse'
-                    href='#TenderDetails'
-                    className={`question ${tenders_data?.authority_name ? '' : 'cursor-not-allowed'}`}
-                >
-                    Authority Name & Contact
-                    <i className='bi bi-chevron-down icon-show'></i>
-                    <i className='bi bi-chevron-up icon-close'></i>
-                    {
-                        tenders_data?.authority_name
-                            ?
-                           ''
-                            :
-                            <i className='bi bi-lock-fill locIcons'></i>
-                    }
-                   
+                <div style={{ cursor: "pointer" }} onClick={() => { if (!tenders_data?.authority_name) { setVisible(true) } }}>
+
+                    <div
+                        data-bs-toggle='collapse'
+                        href='#TenderDetails'
+                        className={`question ${tenders_data?.authority_name ? '' : 'cursor-not-allowed'}`}
+                    >
+                        Authority Name & Contact
+                        <i className='bi bi-chevron-down icon-show'></i>
+                        <i className='bi bi-chevron-up icon-close'></i>
+                        {
+                            tenders_data?.authority_name
+                                ?
+                                ''
+                                :
+                                <i className='bi bi-lock-fill locIcons'></i>
+                        }
+
+                    </div>
                 </div>
                 <div
                     id='TenderDetails'
@@ -148,7 +157,7 @@ export default function TenderDetails(props) {
                 >
                     <div className='pricing pdlr10'>
                         <div className='row'>
-                            
+
 
                             <div
                                 className='col-md-12 mgbtmxy'
@@ -161,22 +170,22 @@ export default function TenderDetails(props) {
                                     <ReadMoreParagraph text={tenders_data?.description} />
                                 </div>
                             </div>
-                           
+
                             {
                                 tenders_data?.authority_name
                                     ?
                                     <Fragment>
-                                         <div
-                                        className='col-lg-3 col-md-6 mgbtmxy'
-                                        data-aos='fade-up'
-                                        data-aos-delay='100'
-                                    >
-                                        <div className='box'>
-                                            <h3> BIG Ref No </h3>
-                                            <p> {tenders_data?.big_ref_no} </p>
+                                        <div
+                                            className='col-lg-3 col-md-6 mgbtmxy'
+                                            data-aos='fade-up'
+                                            data-aos-delay='100'
+                                        >
+                                            <div className='box'>
+                                                <h3> BIG Ref No </h3>
+                                                <p> {tenders_data?.big_ref_no} </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
+
                                         <div
                                             className='col-lg-3 col-md-6 mgbtmxy'
                                             data-aos='fade-up'
@@ -276,22 +285,28 @@ export default function TenderDetails(props) {
                 </div>
             </li>
 
-            <li>
+            <li >
                 <div
-                    data-bs-toggle='collapse'
-                    href='#otherInformation'
-                    className={`question ${tenders_data?.authority_name ? '' : 'cursor-not-allowed'}`}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => { if (!tenders_data?.authority_name) { setVisible(true) } }}
                 >
-                    Other Information
-                    <i className='bi bi-chevron-down icon-show'></i>
-                    <i className='bi bi-chevron-up icon-close'></i>
-                    {
-                        tenders_data?.authority_name
-                            ?
-                           ''
-                            :
-                            <i className='bi bi-lock-fill locIcons'></i>
-                    }
+
+                    <div
+                        data-bs-toggle='collapse'
+                        href='#otherInformation'
+                        className={`question ${tenders_data?.authority_name ? '' : 'cursor-not-allowed'}`}
+                    >
+                        Other Information
+                        <i className='bi bi-chevron-down icon-show'></i>
+                        <i className='bi bi-chevron-up icon-close'></i>
+                        {
+                            tenders_data?.authority_name
+                                ?
+                                ''
+                                :
+                                <i className='bi bi-lock-fill locIcons'></i>
+                        }
+                    </div>
                 </div>
                 <div
                     id='otherInformation'
@@ -339,6 +354,17 @@ export default function TenderDetails(props) {
                                     <a href={tenders_data?.documents}>{tenders_data?.documents}</a>
                                 </div>
                             </div>
+                            <Dialog
+                                className='ModalMaindiwo '
+                                header={"Join Us Today for Exclusive Benefits!"}
+                                visible={visible}
+                                style={{ maxWidth: "80vw", textAlign: "left" }}
+                                onHide={closeDialog}
+                            >
+                                <CallToActionRegisterComponent closeDialog={closeDialog} />
+
+
+                            </Dialog>
                         </div>
                     </div>
                 </div>
