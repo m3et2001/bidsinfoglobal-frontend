@@ -8,7 +8,7 @@ export default function TopCategories({ data }) {
     const handleActionClick = (e, payload, type, url) => {
         e.preventDefault();
         Navigate(url, { state: { [type]: [payload] } });
-        
+
     };
     return (
         <section id="TopTenders" className="services ">
@@ -28,31 +28,39 @@ export default function TopCategories({ data }) {
                     {
                         data?.category_data.map(function (val, ind) {
                             return (
-                                <div
+                                <Link to={"/tenders-list"}
                                     className="col-lg-3 col-md-6 col-sm-6 col-6 cat_list_style d-flex align-items-stretch mb-4 mt-2"
+                                    style={{color:"#003c5e"}}
                                     data-aos="fade-up"
                                     data-aos-delay="100"
                                     key={ind}
-
+                                    onClick={(e) =>
+                                        handleActionClick(
+                                            e,
+                                            val,
+                                            "sectorVal",
+                                            "/tenders-list"
+                                        )
+                                    }
                                 >
+                                    {/* <div
+                                        className="col-lg-3 col-md-6 col-sm-6 col-6 cat_list_style d-flex align-items-stretch mb-4 mt-2"
+                                        data-aos="fade-up"
+                                        data-aos-delay="100"
+                                        key={ind}
+
+                                    > */}
                                     <div className="icon-box" >
                                         <div className="icon nobg">
                                             <img src={val.icon} alt={val.name} />
                                         </div>
                                         <h4>
-                                            <Link to={"/tenders-list"}
-                                                onClick={(e) =>
-                                                    handleActionClick(
-                                                        e,
-                                                        val,
-                                                        "sectorVal",
-                                                        "/tenders-list"
-                                                    )
-                                                }
-                                            >{val.name}</Link>
+                                            {val.name}
+
                                         </h4>
                                     </div>
-                                </div>
+                                    {/* </div> */}
+                                </Link>
                             )
                         })
                     }
