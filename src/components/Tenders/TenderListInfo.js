@@ -53,10 +53,10 @@ export default function TenderListInfo({ getSectorsData }) {
         <div className='section-title sectionList ListPageSection'>
             {isTitleShow &&
                 <>
-                    <h3 style={{ textAlign: "left" }}>
+                    <h3 >
                         {title?.title}
                     </h3>
-                    <p style={{ textAlign: "left" }}>
+                    <p >
                         <Description description={trimParagraph(title?.description, 100)} />
                         <span
                             className='readMoreLink'
@@ -69,11 +69,11 @@ export default function TenderListInfo({ getSectorsData }) {
                             className='ModalMaindiwo'
                             header={title?.title}
                             visible={visible}
-                            style={{ width: "80vw", textAlign: "left" }}
+                            style={{ width: "80vw",textAlign:"center" }}
                             onHide={() => setVisible(false)}
                         >
                             <p className='m-0'
-                                style={{ textAlign: "left" }}
+
 
                             >
                                 <Description description={title?.description} />
