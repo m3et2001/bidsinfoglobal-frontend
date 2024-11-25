@@ -4,7 +4,7 @@ import { handleDateDefault } from "../../helpers/utils";
 import { Dialog } from "primereact/dialog";
 import RegisterComponent from "../RegisterComponent";
 import CallToActionRegisterComponent from "../CallToActionRegisterComponent";
-
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ReadMoreParagraph = ({ text, wordLimit = 150 }) => {
     // State to toggle between showing less and more text
@@ -351,7 +351,12 @@ export default function TenderDetails(props) {
                                     <h3>
                                         Document
                                     </h3>
-                                    <a href={tenders_data?.documents}>{tenders_data?.documents}</a>
+                                    <a href={tenders_data?.documents} target="_blank" rel="noopener noreferrer">
+                                        <p>
+
+                                        <FaExternalLinkAlt size={20} className="" />
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
                         </div>

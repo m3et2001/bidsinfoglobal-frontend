@@ -14,12 +14,32 @@ function trimParagraph(paragraph, wordLimit) {
 }
 
 function Description({ description }) {
-    const formattedDescription = description.replace(/\n/g, "<br />");
-
+    // Step 1: Replace bullet points (•) with proper HTML for a list item
+    const bulletFormattedDescription = description
+      .split('\n') // Split the description into lines
+      .map((line) => {
+        // If the line starts with a bullet point, turn it into a <li> element
+        if (line.startsWith('•')) {
+          return `<li style="text-align: left;">${line.substring(1).trim()}</li>`;
+        }
+        // Otherwise, return it as a regular paragraph with <br />
+        return `<p style="text-align: center;">${line.trim().replace(/\n/g, '<br />')}</p>`;
+      })
+      .join(''); // Join all the lines back together
+  
+    // Step 2: Wrap everything in a <ul> if there are bullet points
+    const finalDescription = bulletFormattedDescription.includes('<li')
+      ? `<ul style="padding-left: 20px;">${bulletFormattedDescription}</ul>`
+      : bulletFormattedDescription;
+  
     return (
-        <div dangerouslySetInnerHTML={{ __html: formattedDescription }} />
+      <div
+        style={{ maxWidth: '800px', margin: '0 auto' }}
+        dangerouslySetInnerHTML={{ __html: finalDescription }}
+      />
     );
-}
+  }
+  
 
 export default function TenderListInfo({ getSectorsData }) {
     const [visible, setVisible] = useState(false);
