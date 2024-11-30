@@ -150,7 +150,7 @@ function Header({
                     </li>
                   </ul>
                 </li>
-                <li className="dropdown">
+                {/* <li className="dropdown">
                   <Link onClick={() => toggleClass()} to={"/tenders-list"}>
                     <span>Tenders By Products/Services/CPV</span>
                   </Link>
@@ -185,7 +185,7 @@ function Header({
                       </Link>
                     </li>
                   </ul>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li
