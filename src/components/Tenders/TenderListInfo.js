@@ -34,7 +34,7 @@ function Description({ description }) {
   
     return (
       <div
-        style={{ maxWidth: '800px', margin: '0 auto' }}
+        style={{ margin: '0 auto' }}
         dangerouslySetInnerHTML={{ __html: finalDescription }}
       />
     );
@@ -89,7 +89,7 @@ export default function TenderListInfo({ getSectorsData }) {
                             className='ModalMaindiwo'
                             header={title?.title}
                             visible={visible}
-                            style={{ width: "80vw",textAlign:"center" }}
+                            style={{ textAlign:"center" }}
                             onHide={() => setVisible(false)}
                         >
                             <p className='m-0'
