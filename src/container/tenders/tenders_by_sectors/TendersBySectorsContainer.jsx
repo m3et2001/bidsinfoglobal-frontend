@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
 import FullScreenLoadingGrow from "../../../components/common/FullScreenLoadingGrow";
 import BreadCrumbs from "../../../components/common/BreadCrumbs";
-import TendersByInfo from "../../../components/Tenders/TendersByInfo";
+import TendersByInfo from "../../../components/Tenders/TendersBySectorInfo";
 import SingleTendersBy from "../../../components/Tenders/SingleTendersBy";
 import { Button } from "../../../components/common/Button";
+import TendersBySectorInfo from "../../../components/Tenders/TendersBySectorInfo";
 
 class TenderBySectorContainer extends React.Component {
     constructor() {
@@ -63,7 +64,7 @@ class TenderBySectorContainer extends React.Component {
                 <main className='bodyMain'>
                     <section id='faq' className='faq'>
                         <div className='container' data-aos='fade-up'>
-                            <TendersByInfo />
+                            <TendersBySectorInfo />
                         </div>
                     </section>
                     <section className='CategoryLst services section-bg pd10'>

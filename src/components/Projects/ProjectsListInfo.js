@@ -4,6 +4,8 @@ import mastersApis from "../../store/masters/mastersApis";
 import { useLocation } from "react-router-dom";
 function trimParagraph(paragraph, wordLimit) {
     // Split the paragraph into words
+    if (!paragraph) { return "" }
+
     const words = paragraph.split(" ");
     // If the paragraph has fewer or equal words than the limit, return it as-is
     if (words.length <= wordLimit) {
@@ -14,6 +16,7 @@ function trimParagraph(paragraph, wordLimit) {
 }
 
 function Description({ description }) {
+    if (!description) { return "" }
     const formattedDescription = description.replace(/\n/g, "<br />");
 
     return (
@@ -36,9 +39,12 @@ export default function TenderListInfo({ getSectorsData }) {
             if (stateValue[0]?.length === 1) {
                 if (stateValue[0][0]?.title) {
                     SetIsTitleShow(true)
+                    console.log(stateValue)
                     setTitle({
                         title: stateValue[0][0].title,
                         description: stateValue[0][0].description,
+                        project_title: stateValue[0][0]?.project_title,
+                        project_description: stateValue[0][0]?.project_description,
                     })
                 }
             }
@@ -51,13 +57,14 @@ export default function TenderListInfo({ getSectorsData }) {
     }, [location.state])
     return (
         <div className='section-title sectionList ListPageSection'>
+            {console.log(title)}
             {isTitleShow &&
                 <>
                     <h3 >
-                        {title?.title}
+                        {title?.project_title}
                     </h3>
                     <p >
-                        <Description description={trimParagraph(title?.description, 100)} />
+                        <Description description={trimParagraph(title?.project_description, 100)} />
                         <span
                             className='readMoreLink'
                             onClick={() => setVisible(true)}
@@ -67,16 +74,16 @@ export default function TenderListInfo({ getSectorsData }) {
                         </span>
                         <Dialog
                             className='ModalMaindiwo'
-                            header={title?.title}
+                            header={title?.project_title}
                             visible={visible}
                             style={{ width: "80vw", textAlign: "center" }}
                             onHide={() => setVisible(false)}
                         >
                             <p className='m-0'
-                                
+
 
                             >
-                                <Description description={title?.description} />
+                                <Description description={title?.project_description} />
 
                             </p>
 

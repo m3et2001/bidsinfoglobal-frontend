@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
 import FullScreenLoadingGrow from "../../../components/common/FullScreenLoadingGrow";
 import BreadCrumbs from "../../../components/common/BreadCrumbs";
-import ProjectsByInfo from "../../../components/Projects/ProjectsByInfo";
+import ProjectsByInfo from "../../../components/Projects/ProjectsBySectorInfo";
 import SingleProjectsBy from "../../../components/Projects/SingleProjectsBy";
 import { Button } from "../../../components/common/Button";
+import ProjectsByRegionInfo from "../../../components/Projects/ProjectsByRegionInfo";
 
 class ProjectsByRegionsContainer extends React.Component {
     constructor() {
@@ -56,14 +57,14 @@ class ProjectsByRegionsContainer extends React.Component {
         return (
             <Fragment>
                 <BreadCrumbs
-                    main='Projects By Sector'
-                    current={"Projects By Sector"}
+                    main='Projects By Region'
+                    current={"Projects By Region"}
                 />
 
                 <main className='bodyMain'>
                     <section id='faq' className='faq'>
                         <div className='container' data-aos='fade-up'>
-                            <ProjectsByInfo />
+                            <ProjectsByRegionInfo />
                         </div>
                     </section>
                     <section className='CategoryLst services section-bg pd10'>

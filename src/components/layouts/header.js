@@ -274,9 +274,9 @@ function Header({
             <li>
               <Link onClick={() => toggleClass()} to={"contract-awards-list"}>Contract Awards</Link>
             </li>
-            <li>
+            {/* <li>
               <Link onClick={() => toggleClass()} to={"grants-list"}>Grants</Link>
-            </li>
+            </li> */}
             <li>
               <Link onClick={() => toggleClass()} to="service">Services</Link>
             </li>

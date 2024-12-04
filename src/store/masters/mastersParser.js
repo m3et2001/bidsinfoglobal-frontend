@@ -97,6 +97,8 @@ export const sectorParser = (response) => {
                 name: val?.name,
                 title: val?.title,
                 description: val?.description,
+                project_title: val?.project_title,
+                project_description: val?.project_description,
                 icon: val?.icon,
                 code: val?.code
             }
@@ -185,6 +187,8 @@ export const regionParser = (response) => {
                 name: val?.name,
                 title: val?.title,
                 description: val?.description,
+                project_title: val?.project_title,
+                project_description: val?.project_description,
                 code: val?.code
             }
             if (response?.by_tenders_count) {

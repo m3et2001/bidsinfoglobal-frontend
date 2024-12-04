@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
 import FullScreenLoadingGrow from "../../../components/common/FullScreenLoadingGrow";
 import BreadCrumbs from "../../../components/common/BreadCrumbs";
-import ProjectsByInfo from "../../../components/Projects/ProjectsByInfo";
+import ProjectsByInfo from "../../../components/Projects/ProjectsBySectorInfo";
 import SingleProjectsBy from "../../../components/Projects/SingleProjectsBy";
 import { Button } from "../../../components/common/Button";
+import ProjectsBySectorInfo from "../../../components/Projects/ProjectsBySectorInfo";
 
 class ProjectsBySectorContainer extends React.Component {
     constructor() {
@@ -63,7 +64,7 @@ class ProjectsBySectorContainer extends React.Component {
                 <main className='bodyMain'>
                     <section id='faq' className='faq'>
                         <div className='container' data-aos='fade-up'>
-                            <ProjectsByInfo />
+                            <ProjectsBySectorInfo />
                         </div>
                     </section>
                     <section className='CategoryLst services section-bg pd10'>
