@@ -31,7 +31,11 @@ export default function SubscribeComponent({
   const handlePlanSelect = (key, val, selectedCategories) => {
     if (isAuth()) {
       setSubmitLoading(key);
-      handlePlan({ plan_id: val.plan_id, categories: selectedCategories ,formData:formData});
+      handlePlan({
+        plan_id: val.plan_id,
+        categories: selectedCategories,
+        formData: formData,
+      });
     } else {
       openDialog();
     }
@@ -46,9 +50,9 @@ export default function SubscribeComponent({
     borderRadius: ".375rem",
   };
   const [formData, setFormData] = useState({
-    dataType: "xml",
-    dataDeliveryType: "api",
-    dataCategory: "multi_industry",
+    dataType: "XML",
+    dataDeliveryType: "API",
+    dataCategory: "Multi Industry",
     emailAlerts: 1,
     userId: 1,
   });
@@ -122,10 +126,10 @@ export default function SubscribeComponent({
                         <option value="" disabled>
                           -- Select an option --
                         </option>
-                        <option value="xml">XML</option>
-                        <option value="newsletter">Newsletter</option>
-                        <option value="json">JSON</option>
-                        <option value="csv">CSV</option>
+                        <option value="XML">XML</option>
+                        <option value="Newsletter">Newsletter</option>
+                        <option value="JSON">JSON</option>
+                        <option value="CSV">CSV</option>
                       </select>
                     </div>
                   </li>
@@ -147,8 +151,8 @@ export default function SubscribeComponent({
                         <option value="" disabled>
                           -- Select an option --
                         </option>
-                        <option value="api">API</option>
-                        <option value="micro_site">Micro-site</option>
+                        <option value="API">API</option>
+                        <option value="Micro-site">Micro-site</option>
                       </select>
                     </div>
                   </li>
@@ -170,9 +174,9 @@ export default function SubscribeComponent({
                         <option value="" disabled>
                           -- Select an option --
                         </option>
-                        <option value="multi_industry">Multi Industry</option>
-                        <option value="bulk_data">Bulk data</option>
-                        <option value="republishing_rights">
+                        <option value="Multi Industry">Multi Industry</option>
+                        <option value="Bulk data">Bulk data</option>
+                        <option value=" Republishing rights">
                           Republishing rights
                         </option>
                       </select>
