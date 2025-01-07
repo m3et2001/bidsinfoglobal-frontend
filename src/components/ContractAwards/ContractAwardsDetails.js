@@ -159,7 +159,7 @@ export default function ContractAwardsDetails(props) {
                                     :
                                     null
                             }
-                            <div
+                            {/* <div
                                 className="col-lg-3 col-md-6 mgbtmxy"
                                 data-aos="fade-up"
                                 data-aos-delay="100"
@@ -168,7 +168,7 @@ export default function ContractAwardsDetails(props) {
                                     <h3>Project Location</h3>
                                     <p>{contract_awards_data?.project_location}</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div
                                 className="col-md-6 mgbtmxy"
                                 data-aos="fade-up"
@@ -222,11 +222,19 @@ export default function ContractAwardsDetails(props) {
                 <div
                     data-bs-toggle="collapse"
                     href="#otherInformation"
-                    className="collapsed question"
+                    // className="collapsed question"
+                    className={` collapsed question ${contract_awards_data?.org_name ? '' : 'cursor-not-allowed'}`}
                 >
                     Other Information
                     <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
+                    {
+                        contract_awards_data?.org_name
+                            ?
+                           ''
+                            :
+                            <i className='bi bi-lock-fill locIcons'></i>
+                    }
                 </div>
                 <div
                     id="otherInformation"
